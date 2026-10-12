@@ -1,0 +1,8 @@
+{
+    "python_version": "3.12",
+    "dependencies": ["./src"],
+    "graphs": {
+        "security_investigation": "./src/security/workflow.py:security_investigation_agent"
+    },
+    "env": "./.env"
+}

@@ -1,0 +1,17 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+ENV PYTHONPATH=/app/src
+
+COPY pyproject.toml README.md ./
+
+COPY src/core/ ./src/core/
+COPY src/schema/ ./src/schema/
+COPY src/security/ ./src/security/
+COPY src/service/ ./src/service/
+COPY src/run_service.py ./src/run_service.py
+COPY knowledge/ ./knowledge/
+
+RUN pip install --no-cache-dir .
+RUN mkdir -p /app/data /app/.runtime-tools
+CMD ["python", "src/run_service.py"]

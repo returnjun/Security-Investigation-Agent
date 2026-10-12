@@ -1,0 +1,9 @@
+{
+  "id": "T1548",
+  "name": "Abuse Elevation Control Mechanism",
+  "tactic": "Privilege Escalation",
+  "description": "攻击者可能滥用系统的权限提升控制机制。演示中的 sudo 事件仅用于展示待核查的技术映射。",
+  "detection": "检查 sudo 等提权审计记录、发起账号、授权策略和执行命令。",
+  "mitigation": "收紧特权账号和 sudo 配置，定期审计提权权限。",
+  "source_url": "https://attack.mitre.org/techniques/T1548/"
+}

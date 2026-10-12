@@ -1,0 +1,9 @@
+{
+  "id": "T1110",
+  "name": "Brute Force",
+  "tactic": "Credential Access",
+  "description": "通过重复尝试凭据获取账号访问权限。大量失败登录可作为调查线索，不能单独证明账号被攻陷。",
+  "detection": "关联同一来源或账号的失败登录量、时间窗口，以及随后是否出现成功登录。",
+  "mitigation": "启用多因素认证，合理设置账号使用与失败登录限制策略。",
+  "source_url": "https://attack.mitre.org/techniques/T1110/"
+}
