@@ -87,7 +87,7 @@ flowchart TD
 
 ## 功能展示
 
-以下截图来自仓库中的 `sercurity-agent/` 目录，展示的是当时的演示状态。实时结果会随数据库中的调查和管理员策略变化。
+README 中的 **12 张截图全部默认展示**，可以沿着“首页 → 事件/提问 → 调查 → 证据 → 审批 → 报告”的顺序浏览。图片来自仓库中的 `sercurity-agent/` 目录；实时结果会随数据库中的调查和管理员策略变化。
 
 ### 01 · 模拟事件自动进入调查
 
@@ -99,20 +99,19 @@ flowchart TD
 
 ### 02 · 不同问题选择不同路径
 
-| 主机风险调查：多源证据 | CVE 问答：聚焦知识 |
-| :---: | :---: |
-| <img src="sercurity-agent/动态Planner1+轨迹.png" alt="主机风险调查的 Planner 轨迹" width="100%"> | <img src="sercurity-agent/动态Planner2+轨迹.png" alt="CVE 知识问答的 Planner 轨迹" width="100%"> |
+**主机风险调查：Planner 查询资产、历史、日志，并根据证据继续补查。**
+
+![主机风险调查的动态 Planner 轨迹](sercurity-agent/动态Planner1+轨迹.png)
+
+**CVE 知识问答：Planner 聚焦安全知识检索，不运行无关的主机任务。**
+
+![CVE 知识问答的动态 Planner 轨迹](sercurity-agent/动态Planner2+轨迹.png)
 
 点击报告下方的“查看完整执行轨迹”，还可以逐步查看节点名称、事件类型、输入和输出摘要。轨迹不保存模型密钥或完整提示词。
 
 ### 03 · 从日志到可追溯结论
 
 调查报告展示规则分数、发现、证据编号、参考知识、技术映射与原始记录。发现中的证据编号可与日志、漏洞、信誉或知识条目对应。
-
-<details>
-<summary><strong>展开：SSH 调查、MITRE 映射与原始证据</strong></summary>
-
-<br>
 
 **SSH 暴力破解调查概览**
 
@@ -122,29 +121,15 @@ flowchart TD
 
 ![MITRE 技术映射与证据](sercurity-agent/MITRE技术映射.png)
 
-</details>
-
 ### 04 · 有来源的安全知识
 
 本地知识库提供 CVE、攻击技术和事件响应指南。界面显示知识编号与来源 URL；检索结果用于解释和核查建议。
 
-<details>
-<summary><strong>展开：RAG 参考知识</strong></summary>
-
-<br>
-
 ![带来源的 RAG 知识](sercurity-agent/参考RAG知识.png)
-
-</details>
 
 ### 05 · 持久化历史、反馈与人工审批
 
 具体资产的近 7 天调查历史会保存在 SQLite。分析员可标记“正确”“误报”“需要调整”，并写补充说明。反馈供后续人工优化，**不会自动训练模型或改写规则**。有响应建议时，主管或管理员可以批准或拒绝。
-
-<details>
-<summary><strong>展开：历史、反馈与模拟响应</strong></summary>
-
-<br>
 
 **近 7 天资产调查历史**
 
@@ -158,22 +143,17 @@ flowchart TD
 
 ![模拟工单与模拟封禁](sercurity-agent/配准执行封禁动作.png)
 
-</details>
-
 ### 06 · 管理配置与报告导出
 
 管理员在左侧“用户管理”创建账号、调整角色与启用状态，配置 SSH 和端口扫描阈值，以及模拟工具开关。调查报告可以下载为 Markdown 文件。
 
-<details>
-<summary><strong>展开：规则管理与下载报告</strong></summary>
-
-<br>
+**管理员界面：账号角色、检测阈值与模拟工具开关**
 
 ![账号与规则配置](sercurity-agent/规则与权限配置.png)
 
-![Markdown 调查报告](sercurity-agent/完全事件报告md文档下载.png)
+**导出的 Markdown 调查报告**
 
-</details>
+![Markdown 调查报告](sercurity-agent/完全事件报告md文档下载.png)
 
 ## 快速开始
 
