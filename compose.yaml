@@ -1,0 +1,33 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.service
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8080
+      STREAMLIT_PORT: ${SECURITY_DASHBOARD_PORT:-18501}
+    ports:
+      - "${SECURITY_API_PORT:-18080}:8080"
+    volumes:
+      - ./data:/app/data
+      - ./.runtime-tools:/app/.runtime-tools
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+    environment:
+      AGENT_URL: http://api:8080
+      STREAMLIT_SERVER_ADDRESS: 0.0.0.0
+    ports:
+      - "${SECURITY_DASHBOARD_PORT:-18501}:8501"
+    depends_on:
+      api:
+        condition: service_healthy

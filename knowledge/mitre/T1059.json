@@ -1,0 +1,9 @@
+{
+  "id": "T1059",
+  "name": "Command and Scripting Interpreter",
+  "tactic": "Execution",
+  "description": "攻击者可能利用命令或脚本解释器执行命令；解释器出现本身不等于恶意活动。",
+  "detection": "核查解释器进程、父子进程关系、执行账号与命令上下文。",
+  "mitigation": "结合实际环境限制不必要的解释器执行，并审查异常命令与脚本。",
+  "source_url": "https://attack.mitre.org/techniques/T1059/"
+}
